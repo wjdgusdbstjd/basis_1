@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/destyle.css@1.0.5/destyle.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <header id="header">
+            <ul>
+                <li><a href="#">메뉴</a></li>
+                <li><a href="#">매장</a></li>
+                <li><a href="#">이야기</a></li>
+            </ul>
+            <h1>nanpo</h1>
+        </header>
+        <section id="section1">
+            <p>푸르디푸른, 난포</p>
+        </section>
+        <section id="section2">
+            <div class="section2_img">
+                <img src="image3.jpg" alt="">
+                <p>할머니가 차려주신 정갈한 집밥의 느낌을 가득 담은 강된장 쌈밥.<br>
+                    케일로 만든 쌈밥을 강된장 위에 정갈하게 올리고 강된장에서 느껴지는 <br>
+                    은은한 감칠맛과 담백함이 매력적인 음식입니다.</p>
+            </div>
+        </section>
+        <section id="section3">
+            <div class="section3_txt">
+                <p>맛있는 강원도의 햇감자와 두가지 종류의 새우가 들어가고 그 위에<br>
+                치즈와 수란으로 완성됩니다. 감자의 계절인 여름엔, 더욱 고소한 맛을 <br>
+            자랑하는 바삭하고 담백한 매력적인 음식입니다.</p>
+            </div>
+            <div class="section3_img">
+                <img src="image4.jpg" alt="">
+            </div>
+        </section>
+        <section id="section4">
+            <div class="section4_img">
+                <img src="image5.jpg" alt="">
+                <p>샐러드처럼 풍성하고 가득한 신선한 나물과 그 위에 알맞게 익힌 <br>
+                탱글탱글한 문어의 식감까지, 쫄깃한 묜에 약간의 새콤함이 간장양념과 <br>
+            어주 잘 어우러진 음식입니다.</p>
+            </div>
+        </section>
+        <section id="section5">
+        </section>
+        <footer>
+            <ul>
+                <li>저자 : kimjunghyun</li>
+                <li>이메일 : lucy1216@kaywon.ac.kr</li>
+                <li>Copyright 2023.kimjunghyun.All Rights Reserved.</li>
+            </ul>
+        </footer>
+        <footer></footer>
+
+        <button id="top_btn">top</button>
+    </div>
+
+
+
+
+    <script>
+        //myHeader라는 변수의 이름을 임의로 설정하면 
+        var myHeader = document.getElementById("header");
+        //마우스 이벤트
+        myHeader.onmouseover = function () {
+            console.log("마우스오버");
+            //this도 myHeader과 같은 것을 지칭하기 때문에 this도 가능하다
+            console.log(myHeader);
+            console.log(this);
+            //myHeader로만 불러오면 되기때문에 코드가 간결해진다.
+            //this.style.backgroundColor = "rgba(255, 255, 255, 0.743)";
+            this.classList.add("over"); //마우스를 더했을 떄
+        }
+        myHeader.onmouseout = function () {
+            console.log("마우스오버");
+            //this.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+            this.classList.remove("over"); //마우스를 아웃했을 때
+        }
+
+        //scrolling event
+        window.addEventListener("scroll", function () {
+            //console.log("스크롤링");
+            console.log(window.scrollY);
+            if (window.scrollY > 200) {
+                console.log("200 이상");
+                console.log("myHeader");
+                //myHeader.style.height = 0;
+                //myHeader.class.top = -100 + "px";
+                myHeader.classList.add("down");
+                myHeader.classList.remove("up");
+            } else {
+                console.log("200 미만")
+                //myHeader.style.height = 100 + "px";
+                //myHeader.style.top = 0 + "px";
+                myHeader.classList.remove("down");
+                myHeader.classList.add("up");
+            }
+        });
+
+
+        // "상단으로" 버튼을 클릭할 때 실행되는 함수
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+        var button = document.getElementById('top_btn');
+        button.addEventListener('click', scrollToTop);
+
+
+
+        // HTML 요소 선택하기
+        const element = document.querySelector('.section2_img');
+
+        // 스크롤 이벤트 처리하기
+        window.addEventListener('scroll', function () {
+            // 요소의 위치와 크기 구하기
+            const rect = element.getBoundingClientRect();
+
+            // 요소가 화면 안에 있을 때
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                // 요소를 서서히 나타나게 하기
+                element.style.opacity = 1;
+                element.style.transform = 'translateX(0)';
+            }
+        });
+
+        const element2 = document.querySelector('.section3_txt');
+
+        // 스크롤 이벤트 처리하기
+        window.addEventListener('scroll', function () {
+            // 요소의 위치와 크기 구하기
+            const rect = element2.getBoundingClientRect();
+
+            // 요소가 화면 안에 있을 때
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                // 요소를 서서히 나타나게 하기
+                element2.style.opacity = 1;
+                element2.style.transform = 'translateX(0)';
+            }
+        });
+
+        const element3 = document.querySelector('.section3_img');
+
+        // 스크롤 이벤트 처리하기
+        window.addEventListener('scroll', function () {
+            // 요소의 위치와 크기 구하기
+            const rect = element3.getBoundingClientRect();
+
+            // 요소가 화면 안에 있을 때
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                // 요소를 서서히 나타나게 하기
+                element3.style.opacity = 1;
+                element3.style.transform = 'translateX(0)';
+            }
+        });
+
+        const element4 = document.querySelector('.section4_img');
+
+        // 스크롤 이벤트 처리하기
+        window.addEventListener('scroll', function () {
+            // 요소의 위치와 크기 구하기
+            const rect = element4.getBoundingClientRect();
+
+            // 요소가 화면 안에 있을 때
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                // 요소를 서서히 나타나게 하기
+                element4.style.opacity = 1;
+                element4.style.transform = 'translateX(0)';
+            }
+        });
+    </script>
+</body>
+
+</html>
